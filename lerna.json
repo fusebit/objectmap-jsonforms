@@ -1,0 +1,18 @@
+{
+  "packages": [
+    "./",
+    "src/core",
+    "src/data-mapper",
+    "src/mapping-renderers"
+  ],
+  "command": {
+    "publish": {
+      "ignoreChanges": [
+        "ignored-file",
+        "*.md"
+      ],
+      "message": "chore(release): publish"
+    }
+  },
+  "version": "1.0.0"
+}
