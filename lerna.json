@@ -1,0 +1,17 @@
+{
+  "packages": [
+    "./",
+    "src/objectmap-jsonforms",
+    "src/objectmap-utils"
+  ],
+  "command": {
+    "publish": {
+      "ignoreChanges": [
+        "ignored-file",
+        "*.md"
+      ],
+      "message": "chore(release): publish"
+    }
+  },
+  "version": "1.0.0"
+}

@@ -1,0 +1,47 @@
+{
+  "name": "@fusebit/objectmap-jsonforms",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "rollup": "rollup -c",
+    "build:watch": "rollup -c -w",
+    "prettier": "prettier --write ."
+  },
+  "author": "Fusebit",
+  "license": "ISC",
+  "devDependencies": {
+    "@material-ui/core": "^4.12.4",
+    "@rollup/plugin-commonjs": "^22.0.1",
+    "@rollup/plugin-json": "^4.1.0",
+    "@rollup/plugin-node-resolve": "^13.3.0",
+    "@rollup/plugin-replace": "^4.0.0",
+    "@rollup/plugin-typescript": "^8.3.4",
+    "@types/dot-object": "^2.1.2",
+    "@types/material-ui": "^0.21.12",
+    "@types/react": "^16.14.0",
+    "prettier": "^2.7.1",
+    "rollup": "^2.79.0",
+    "rollup-plugin-dts": "^4.2.2",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
+    "rollup-plugin-terser": "^7.0.2",
+    "tslib": "^2.4.0",
+    "typescript": "^4.8.3"
+  },
+  "peerDependencies": {
+    "@jsonforms/core": "^2.5.2",
+    "@jsonforms/material-renderers": "^2.5.2",
+    "@jsonforms/react": "^2.5.2",
+    "@material-ui/core": "^4.11.2",
+    "react": "^16.14.0"
+  },
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "files": [
+    "dist"
+  ],
+  "types": "dist/index.d.ts",
+  "dependencies": {
+    "dot-object": "^2.1.4",
+    "session-data-mapper": "*"
+  }
+}
