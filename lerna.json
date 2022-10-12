@@ -1,9 +1,8 @@
 {
   "packages": [
     "./",
-    "src/core",
-    "src/data-mapper",
-    "src/mapping-renderers"
+    "src/objectmap-jsonforms",
+    "src/objectmap-utils"
   ],
   "command": {
     "publish": {
