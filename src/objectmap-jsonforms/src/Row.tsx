@@ -40,7 +40,7 @@ const Row = ({ target, sourceEnum, onChange }: Props) => {
               return;
             }
 
-            setTargetValue('');
+            setTargetValue(e.target.value);
             onChange(target?.value || '', source);
           }}
         >
