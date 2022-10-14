@@ -1,3 +1,3 @@
-import * as sessionDataMapper from './sdk';
+import * as objectMap from './sdk';
 
-export { sessionDataMapper };
+export { objectMap };
