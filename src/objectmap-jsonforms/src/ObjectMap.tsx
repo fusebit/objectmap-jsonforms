@@ -66,7 +66,7 @@ const ObjectMapControlRenderer = withJsonFormsControlProps(ObjectMapControlVanil
 
 const ObjectMapControl = {
   tester: ObjectMapControlTester,
-  renderer:ObjectMapControlRenderer,
+  renderer: ObjectMapControlRenderer,
 };
 
 export { ObjectMapControl, ObjectMapControlTester, ObjectMapControlRenderer };
