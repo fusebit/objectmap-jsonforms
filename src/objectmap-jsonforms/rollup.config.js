@@ -17,7 +17,7 @@ export default [
       {
         file: packageJson.main,
         format: 'iife',
-        name: 'ObjectMapUtils',
+        name: 'ObjectMap',
         globals: {
           react: 'React',
           '@jsonforms/core': 'JSONFormsCore',

@@ -16,7 +16,7 @@ export default [
       {
         file: packageJson.main,
         format: 'cjs',
-        name: 'ObjectMap',
+        name: 'ObjectMapUtils',
       },
       {
         file: packageJson.module,
