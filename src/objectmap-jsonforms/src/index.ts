@@ -1,5 +1,5 @@
-import MappingRendererControl from './MappingRenderer';
+import ObjectMapControl from './ObjectMap';
 import SourceTableControl from './SourceTable';
 import TransformedTableControl from './TransformedTable';
 
-export { MappingRendererControl, SourceTableControl, TransformedTableControl };
+export { ObjectMapControl, SourceTableControl, TransformedTableControl };

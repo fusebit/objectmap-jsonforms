@@ -2,14 +2,14 @@ import React, { useMemo } from 'react';
 import { useJsonForms, withJsonFormsControlProps } from '@jsonforms/react';
 import { rankWith, ControlProps, and, uiTypeIs } from '@jsonforms/core';
 import { Table, TableBody, TableCell, TableRow, TableHead, TableContainer, Paper, Typography } from '@material-ui/core';
-import { sessionDataMapper } from 'session-data-mapper';
+import { objectMap } from 'objectmap-utils';
 import dot from 'dot-object';
 
 const TransformedTableVanillaRenderer = ({ data }: ControlProps) => {
   const ctx = useJsonForms();
 
   const tranformedTable: any = useMemo(() => {
-    return dot.dot(sessionDataMapper.transformData(ctx.core.data, data)) || [];
+    return dot.dot(objectMap.transformData(ctx.core.data, data)) || [];
   }, [ctx.core.data, data]);
 
   return (
