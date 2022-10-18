@@ -42,6 +42,6 @@
   "types": "dist/index.d.ts",
   "dependencies": {
     "dot-object": "^2.1.4",
-    "session-data-mapper": "*"
+    "@fusebit/objectmap-utils": "^1.1.0"
   }
 }

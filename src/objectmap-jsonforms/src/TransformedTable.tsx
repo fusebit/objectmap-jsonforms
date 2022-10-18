@@ -2,7 +2,7 @@ import React, { useMemo } from 'react';
 import { useJsonForms, withJsonFormsControlProps } from '@jsonforms/react';
 import { rankWith, ControlProps, and, uiTypeIs } from '@jsonforms/core';
 import { Table, TableBody, TableCell, TableRow, TableHead, TableContainer, Paper, Typography } from '@material-ui/core';
-import { objectMap } from 'objectmap-utils';
+import { objectMap } from '@fusebit/objectmap-utils';
 import dot from 'dot-object';
 
 const TransformedTableVanillaRenderer = ({ data }: ControlProps) => {
