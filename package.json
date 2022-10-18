@@ -1,6 +1,6 @@
 {
   "name": "@fusebit-int/objectmap-jsonforms",
-  "version": "1.4.2",
+  "version": "1.4.3",
   "license": "MIT",
   "devDependencies": {
     "husky": "^7.0.4",
