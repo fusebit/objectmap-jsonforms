@@ -74,7 +74,7 @@ export const createSchema = ({
             source: {
               type: 'object',
               title: source?.title,
-              enum: [{ value: 'Clear Property', type: 'clearable' }, ...sourceEnum],
+              enum: [{ value: '(Do Not Map)', type: 'clearable' }, ...sourceEnum],
             },
             target: {
               type: 'object',

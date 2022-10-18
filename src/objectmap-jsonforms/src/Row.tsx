@@ -40,13 +40,8 @@ const Row = ({ target, sourceEnum, onChange }: Props) => {
               return;
             }
 
-            if (source.type === 'clearable') {
-              setTargetValue('');
-              onChange(target?.value || '', source);
-            } else {
-              setTargetValue(e.target.value);
-              onChange(target?.value || '', source);
-            }
+            setTargetValue(e.target.value);
+            onChange(target?.value || '', source);
           }}
         >
           {sourceEnum.map((e) => (
