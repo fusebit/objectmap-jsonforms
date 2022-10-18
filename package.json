@@ -1,9 +1,8 @@
 {
   "name": "@fusebit-int/objectmap-jsonforms",
-  "private": true,
-  "version": "1.0.0",
+  "version": "1.3.0",
   "devDependencies": {
-    "husky": "^7.0.0",
+    "husky": "^7.0.4",
     "hygen": "^6.1.0",
     "lerna": "^4.0.0",
     "prettier": "2.0.5"

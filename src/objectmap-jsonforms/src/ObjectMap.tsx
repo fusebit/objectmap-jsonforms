@@ -27,7 +27,7 @@ type CustomProps = {
 
 type JsonSchemaWithCustomProps = JsonSchema & CustomProps;
 
-const MappingRendererControlVanillaRenderer = ({ data, handleChange, path, ...props }: ControlProps) => {
+const ObjectMapControlVanillaRenderer = ({ data, handleChange, path, ...props }: ControlProps) => {
   const schema = props.schema as JsonSchemaWithCustomProps;
 
   const handleRowChange = (targetValue: string, source: Enum) => {
@@ -61,14 +61,14 @@ const MappingRendererControlVanillaRenderer = ({ data, handleChange, path, ...pr
   );
 };
 
-const MappingRendererControlTester = rankWith(3, and(uiTypeIs('ObjectMap')));
-const MappingRendererControlRenderer = withJsonFormsControlProps(MappingRendererControlVanillaRenderer);
+const ObjectMapControlTester = rankWith(3, and(uiTypeIs('ObjectMap')));
+const ObjectMapControlRenderer = withJsonFormsControlProps(ObjectMapControlVanillaRenderer);
 
-const MappingRendererControl = {
-  tester: MappingRendererControlTester,
-  renderer: MappingRendererControlRenderer,
+const ObjectMapControl = {
+  tester: ObjectMapControlTester,
+  renderer: ObjectMapControlRenderer,
 };
 
-export { MappingRendererControl, MappingRendererControlTester, MappingRendererControlRenderer };
+export { ObjectMapControl, ObjectMapControlTester, ObjectMapControlRenderer };
 
-export default MappingRendererControl;
+export default ObjectMapControl;
