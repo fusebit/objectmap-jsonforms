@@ -36,7 +36,9 @@
   },
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "types": "dist/index.d.ts",
   "dependencies": {
     "@fusebit/objectmap-utils": "^1.4.2",
