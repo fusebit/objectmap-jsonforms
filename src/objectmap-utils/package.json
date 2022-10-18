@@ -3,7 +3,7 @@
   "version": "1.4.0",
   "description": "",
   "scripts": {
-    "rollup": "rollup -c",
+    "build": "rollup -c",
     "build:watch": "rollup -c -w",
     "prettier": "prettier --write ."
   },
