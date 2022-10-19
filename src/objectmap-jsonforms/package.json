@@ -1,6 +1,6 @@
 {
   "name": "@fusebit/objectmap-jsonforms",
-  "version": "1.4.3",
+  "version": "1.5.0",
   "description": "",
   "scripts": {
     "build": "rollup -c",
@@ -41,7 +41,7 @@
   ],
   "types": "dist/index.d.ts",
   "dependencies": {
-    "@fusebit/objectmap-utils": "^1.4.3",
+    "@fusebit/objectmap-utils": "^1.5.0",
     "dot-object": "^2.1.4"
   }
 }
