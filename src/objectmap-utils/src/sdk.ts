@@ -124,17 +124,21 @@ export const createRecipe = (data: any) => {
   );
 };
 
-export const transformData = (data: any, sourceData: any) => {
+export const transformData = (data: any, sourceData: [{ [key: string]: any }]) => {
   try {
     const recipe = createRecipe(data);
-    const transformedData = Object.keys(recipe || []).reduce((acc: any, curr) => {
-      const sourceKey = recipe[curr];
-      const sourceValue = dot.pick(sourceKey, sourceData);
-      acc[curr] = sourceValue;
-      return dot.object(acc);
-    }, {});
+    const transformations = sourceData.map((source) => {
+      const transformedData = Object.keys(recipe || []).reduce((acc: any, curr) => {
+        const sourceKey = recipe[curr];
+        const sourceValue = dot.pick(sourceKey, source);
+        acc[curr] = sourceValue;
+        return dot.object(acc);
+      }, {});
 
-    return transformedData;
+      return transformedData;
+    });
+
+    return transformations;
   } catch (e) {
     console.error(e);
   }
