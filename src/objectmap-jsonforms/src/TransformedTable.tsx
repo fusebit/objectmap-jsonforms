@@ -4,11 +4,12 @@ import { rankWith, ControlProps, and, uiTypeIs } from '@jsonforms/core';
 import { Table, TableBody, TableCell, TableRow, TableHead, TableContainer, Paper, Typography } from '@material-ui/core';
 import { objectMap } from '@fusebit/objectmap-utils';
 import dot from 'dot-object';
+import { AnyObject } from './types';
 
 const TransformedTableVanillaRenderer = ({ data }: ControlProps) => {
   const ctx = useJsonForms();
 
-  const tranformedTable: { [key: string]: any } = useMemo(() => {
+  const tranformedTable: AnyObject = useMemo(() => {
     const transformedData = objectMap.transformData(ctx.core.data, [dot.object(data)])?.[0];
     return dot.dot(transformedData) || [];
   }, [ctx.core.data, data]);

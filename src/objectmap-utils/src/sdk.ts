@@ -1,4 +1,5 @@
 import dot from 'dot-object';
+import { AnyObject } from './types';
 
 const getKeyWithoutLastElement = (key: string) => {
   const splittedKey = key.split('.');
@@ -12,8 +13,8 @@ const parseKey = (key: string) => {
   return objectKey;
 };
 
-const generateEnum = (schema: { [key: string]: any }) => {
-  const schemaEnum: { [key: string]: any }[] = [];
+const generateEnum = (schema: AnyObject) => {
+  const schemaEnum: AnyObject[] = [];
 
   Object.keys(dot.dot(schema.properties)).forEach((key) => {
     const value = parseKey(key);
@@ -29,7 +30,7 @@ const generateEnum = (schema: { [key: string]: any }) => {
   return schemaEnum;
 };
 
-export const getKeyByUiSchemaType = (uischema: { [key: string]: any }, type: string) => {
+export const getKeyByUiSchemaType = (uischema: AnyObject, type: string) => {
   let objectKey = '';
 
   Object.keys(dot.dot(uischema)).forEach((element) => {
@@ -51,10 +52,10 @@ export const createSchema = ({
   uischema,
   dataToTransform,
 }: {
-  source: { [key: string]: any };
-  target: { [key: string]: any };
-  uischema: { [key: string]: any };
-  dataToTransform?: { [key: string]: any };
+  source: AnyObject;
+  target: AnyObject;
+  uischema: AnyObject;
+  dataToTransform?: AnyObject;
 }) => {
   const objectMapKey = getKeyByUiSchemaType(uischema, 'ObjectMap');
   const sourceTableKey = getKeyByUiSchemaType(uischema, 'SourceTable');
@@ -89,7 +90,7 @@ export const createSchema = ({
     },
   };
 
-  const fallbackDataToTransform = sourceEnum.reduce((acc: { [key: string]: any }, curr: { [key: string]: any }) => {
+  const fallbackDataToTransform = sourceEnum.reduce((acc: AnyObject, curr: AnyObject) => {
     return { ...acc, [curr.value]: 'null' };
   }, {});
 
@@ -98,7 +99,7 @@ export const createSchema = ({
   return {
     schema,
     data: {
-      [objectMapKey]: targetEnum.map((target: { [key: string]: any }) => ({ target })),
+      [objectMapKey]: targetEnum.map((target: AnyObject) => ({ target })),
       [sourceTableKey]: sourceData,
       [TransformedTableKey]: sourceData,
       baseKeys: {
@@ -110,7 +111,7 @@ export const createSchema = ({
   };
 };
 
-export const createRecipe = (data: { [key: string]: any }) => {
+export const createRecipe = (data: AnyObject) => {
   if (!data.baseKeys.objectMapKey) {
     return;
   }
@@ -130,11 +131,11 @@ export const createRecipe = (data: { [key: string]: any }) => {
   );
 };
 
-export const transformData = (data: { [key: string]: any }, sourceData: { [key: string]: any }[]) => {
+export const transformData = (data: AnyObject, sourceData: AnyObject[]) => {
   try {
     const recipe = createRecipe(data);
     const transformations = sourceData.map((source) => {
-      const transformedData = Object.keys(recipe || []).reduce((acc: { [key: string]: any }, curr) => {
+      const transformedData = Object.keys(recipe || []).reduce((acc: AnyObject, curr) => {
         const sourceKey = recipe[curr];
         const sourceValue = dot.pick(sourceKey, source);
         acc[curr] = sourceValue;
