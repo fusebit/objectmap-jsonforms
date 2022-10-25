@@ -26,7 +26,7 @@ const SourceTableVanillaRenderer = ({ data }: ControlProps) => {
           <TableBody>
             <TableRow>
               {Object.keys(baseTable).map((val) => (
-                <TableCell key={val}>{dot.pick(val, data)}</TableCell>
+                <TableCell key={val}>{baseTable[val]}</TableCell>
               ))}
             </TableRow>
           </TableBody>

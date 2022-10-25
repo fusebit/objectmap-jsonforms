@@ -54,7 +54,7 @@ export const createSchema = ({
   source: any;
   target: any;
   uischema: any;
-  dataToTransform: any;
+  dataToTransform?: any;
 }) => {
   const objectMapKey: any = getKeyByUiSchemaType(uischema, 'ObjectMap');
   const sourceTableKey: any = getKeyByUiSchemaType(uischema, 'SourceTable');
@@ -89,12 +89,18 @@ export const createSchema = ({
     },
   };
 
+  const fallbackDataToTransform = sourceEnum.reduce((acc: { [key: string]: any }, curr: { [key: string]: any }) => {
+    return { ...acc, [curr.value]: 'null' };
+  }, {});
+
+  const sourceData = Object.keys(dataToTransform || {}).length > 0 ? dataToTransform : fallbackDataToTransform;
+
   return {
-    schema: schema,
+    schema,
     data: {
       [objectMapKey]: targetEnum.map((target: any) => ({ target })),
-      [sourceTableKey]: dataToTransform,
-      [TransformedTableKey]: dataToTransform,
+      [sourceTableKey]: sourceData,
+      [TransformedTableKey]: sourceData,
       baseKeys: {
         objectMapKey,
         sourceTableKey,
