@@ -4,6 +4,10 @@ import { rankWith, ControlProps, JsonSchema, and, uiTypeIs } from '@jsonforms/co
 import Row from './Row';
 import { Typography } from '@material-ui/core';
 
+interface Row {
+  target: Enum;
+}
+
 interface Enum {
   value: string;
   label?: string;
@@ -31,7 +35,7 @@ const ObjectMapControlVanillaRenderer = ({ data, handleChange, path, ...props }:
   const schema = props.schema as JsonSchemaWithCustomProps;
 
   const handleRowChange = (targetValue: string, source: Enum) => {
-    const i = data.findIndex((row: any) => row.target.value === targetValue);
+    const i = data.findIndex((row: Row) => row.target.value === targetValue);
 
     if (source.type === 'clearable') {
       data[i] = { target: data[i].target };
@@ -52,7 +56,7 @@ const ObjectMapControlVanillaRenderer = ({ data, handleChange, path, ...props }:
           {schema.items.properties.source.title}
         </Typography>
       </div>
-      {schema.items.properties.target.enum.map((e: any) => {
+      {schema.items.properties.target.enum.map((e: Enum) => {
         return (
           <Row key={e.value} target={e} sourceEnum={schema.items.properties.source.enum} onChange={handleRowChange} />
         );

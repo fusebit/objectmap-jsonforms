@@ -8,7 +8,7 @@ import dot from 'dot-object';
 const TransformedTableVanillaRenderer = ({ data }: ControlProps) => {
   const ctx = useJsonForms();
 
-  const tranformedTable: any = useMemo(() => {
+  const tranformedTable: { [key: string]: any } = useMemo(() => {
     const transformedData = objectMap.transformData(ctx.core.data, [dot.object(data)])?.[0];
     return dot.dot(transformedData) || [];
   }, [ctx.core.data, data]);

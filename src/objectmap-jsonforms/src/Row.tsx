@@ -33,14 +33,14 @@ const Row = ({ target, sourceEnum, onChange }: Props) => {
         <Select
           label="Select a Property"
           value={targetValue}
-          onChange={(e: any) => {
+          onChange={(e) => {
             const source = sourceEnum.find((val) => val.value === e.target.value);
 
             if (!source) {
               return;
             }
 
-            setTargetValue(e.target.value);
+            setTargetValue(e.target.value as string);
             onChange(target?.value || '', source);
           }}
         >
