@@ -90,11 +90,7 @@ export const createSchema = ({
     },
   };
 
-  const fallbackDataToTransform = sourceEnum.reduce((acc: AnyObject, curr: AnyObject) => {
-    return { ...acc, [curr.value]: 'null' };
-  }, {});
-
-  const sourceData = Object.keys(dataToTransform || {}).length > 0 ? dataToTransform : fallbackDataToTransform;
+  const sourceData = Object.keys(dataToTransform || {}).length > 0 ? dataToTransform : {};
 
   return {
     schema,

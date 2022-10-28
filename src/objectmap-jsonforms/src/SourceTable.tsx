@@ -9,7 +9,9 @@ const SourceTableVanillaRenderer = ({ data }: ControlProps) => {
     return dot.dot(data);
   }, [data]);
 
-  return (
+  const renderTable = Object.keys(data).length > 0;
+
+  return renderTable ? (
     <div>
       <Typography variant="h5" style={{ width: 'max-content', margin: '16px 0' }}>
         Source Data
@@ -33,7 +35,7 @@ const SourceTableVanillaRenderer = ({ data }: ControlProps) => {
         </Table>
       </TableContainer>
     </div>
-  );
+  ) : null;
 };
 
 const SourceTableTester = rankWith(3, and(uiTypeIs('SourceTable')));

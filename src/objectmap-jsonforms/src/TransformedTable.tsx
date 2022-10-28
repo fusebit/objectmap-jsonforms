@@ -16,7 +16,9 @@ const TransformedTableVanillaRenderer = ({ data }: ControlProps) => {
     return dot.dot(transformedDataObject) || [];
   }, [ctx.core.data, data]);
 
-  return (
+  const renderTable = Object.keys(data).length > 0;
+
+  return renderTable ? (
     <div>
       {Object.keys(tranformedTable || []).length > 0 && (
         <>
@@ -44,7 +46,7 @@ const TransformedTableVanillaRenderer = ({ data }: ControlProps) => {
         </>
       )}
     </div>
-  );
+  ) : null;
 };
 
 const TransformedTableTester = rankWith(3, and(uiTypeIs('TransformedTable')));
