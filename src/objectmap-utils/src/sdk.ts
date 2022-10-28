@@ -117,8 +117,7 @@ export const createRecipe = (data: AnyObject) => {
   }
 
   return data?.[data.baseKeys.objectMapKey]?.reduce(
-    //@ts-ignore
-    (acc, { source, target }) => {
+    (acc: AnyObject, { source, target }: { source: { value: AnyObject }; target: { value: string } }) => {
       if (!source?.value) {
         return acc;
       }

@@ -10,8 +10,10 @@ const TransformedTableVanillaRenderer = ({ data }: ControlProps) => {
   const ctx = useJsonForms();
 
   const tranformedTable: AnyObject = useMemo(() => {
-    const transformedData = objectMap.transformData(ctx.core.data, [dot.object(data)])?.[0];
-    return dot.dot(transformedData) || [];
+    const sourceData = [dot.object(data)];
+    const transformedDataArray = objectMap.transformData(ctx.core.data, sourceData);
+    const transformedDataObject = transformedDataArray?.[0] || {};
+    return dot.dot(transformedDataObject) || [];
   }, [ctx.core.data, data]);
 
   return (
