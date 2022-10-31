@@ -5,35 +5,57 @@ import { Table, TableBody, TableCell, TableRow, TableHead, TableContainer, Paper
 import dot from 'dot-object';
 
 const SourceTableVanillaRenderer = ({ data }: ControlProps) => {
-  const baseTable = useMemo(() => {
-    return dot.dot(data);
+  const { baseTable, isDataEmpty, renderTable } = useMemo(() => {
+    const sourceData = data || {};
+
+    if (!data) {
+      return { baseTable: null, renderTable: false, isDataEmpty: true };
+    }
+
+    if (Object.keys(sourceData).length === 0) {
+      return { baseTable: null, renderTable: true, isDataEmpty: true };
+    }
+
+    return { baseTable: dot.dot(sourceData), renderTable: true, isDataEmpty: false };
   }, [data]);
 
-  return (
-    <div>
-      <Typography variant="h5" style={{ width: 'max-content', margin: '16px 0' }}>
-        Source Data
-      </Typography>
-      <TableContainer component={Paper} style={{ marginBottom: '16px' }}>
-        <Table>
-          <TableHead>
-            <TableRow>
-              {Object.keys(baseTable).map((val) => (
-                <TableCell key={val}>{val}</TableCell>
-              ))}
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            <TableRow>
-              {Object.keys(baseTable).map((val) => (
-                <TableCell key={val}>{dot.pick(val, data)}</TableCell>
-              ))}
-            </TableRow>
-          </TableBody>
-        </Table>
-      </TableContainer>
-    </div>
-  );
+  if (renderTable && isDataEmpty) {
+    return (
+      <div>
+        <Typography style={{ width: 'max-content', margin: '16px 0' }}>No Data Found</Typography>
+      </div>
+    );
+  }
+
+  if (renderTable && !isDataEmpty) {
+    return (
+      <div>
+        <Typography variant="h5" style={{ width: 'max-content', margin: '16px 0' }}>
+          Source Data
+        </Typography>
+        <TableContainer component={Paper} style={{ marginBottom: '16px' }}>
+          <Table>
+            <TableHead>
+              <TableRow>
+                {Object.keys(baseTable).map((val) => (
+                  <TableCell key={val}>{val}</TableCell>
+                ))}
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              <TableRow>
+                {Object.keys(baseTable).map((val) => (
+                  <TableCell key={val}>{baseTable[val]}</TableCell>
+                ))}
+              </TableRow>
+            </TableBody>
+          </Table>
+        </TableContainer>
+      </div>
+    );
+  }
+
+  return null;
 };
 
 const SourceTableTester = rankWith(3, and(uiTypeIs('SourceTable')));
