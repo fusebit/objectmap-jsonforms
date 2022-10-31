@@ -90,14 +90,12 @@ export const createSchema = ({
     },
   };
 
-  const sourceData = Object.keys(dataToTransform || {}).length > 0 ? dataToTransform : {};
-
   return {
     schema,
     data: {
       [objectMapKey]: targetEnum.map((target: AnyObject) => ({ target })),
-      [sourceTableKey]: sourceData,
-      [TransformedTableKey]: sourceData,
+      [sourceTableKey]: dataToTransform,
+      [TransformedTableKey]: dataToTransform,
       baseKeys: {
         objectMapKey,
         sourceTableKey,

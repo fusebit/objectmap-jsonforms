@@ -10,13 +10,13 @@ const TransformedTableVanillaRenderer = ({ data }: ControlProps) => {
   const ctx = useJsonForms();
 
   const tranformedTable: AnyObject = useMemo(() => {
-    const sourceData = [dot.object(data)];
+    const sourceData = [dot.object(data || {})];
     const transformedDataArray = objectMap.transformData(ctx.core.data, sourceData);
     const transformedDataObject = transformedDataArray?.[0] || {};
     return dot.dot(transformedDataObject) || [];
   }, [ctx.core.data, data]);
 
-  const renderTable = Object.keys(data).length > 0;
+  const renderTable = Object.keys(data || {}).length > 0;
 
   return renderTable ? (
     <div>
